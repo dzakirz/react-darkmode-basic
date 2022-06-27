@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      <Navbar />
+      <Navbar isHomeActive="nav-menu-item-active" isAboutActive="nav-menu-item"/>
       <HomeContent darkMode={darkMode}>
         <div className="home-content-container">
           <h2 className="home-content-header">Hello World <span className="alert-symbol"> ! </span></h2>
@@ -32,11 +32,13 @@ export default Home
 const HomeContent = styled.div`
   width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
   
   .home-content-container{
     margin-top: 250px;
     position: relative;
-    padding: 0 720px;
+    width: 450px;
 
     .home-content-header{
       font-size: 56px;

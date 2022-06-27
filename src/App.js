@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { ThemeContext } from './contexts/ThemeContext'
-
 import GlobalStyleDark from './globalStyleDark'
 import GlobalStyle from './globalStyles'
 import About from './pages/About'

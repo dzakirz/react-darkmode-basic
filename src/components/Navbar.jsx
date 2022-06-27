@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ThemeContext } from '../contexts/ThemeContext'
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { darkMode } = React.useContext(ThemeContext)
 
   return (
@@ -11,10 +11,10 @@ const Navbar = () => {
       <div className="nav-container">
         <h1 className="nav-header">{darkMode ? "DarkMode" : "LightMode"}.</h1>
         <ul className="nav-menu">
-          <li className="nav-menu-item-active">
+          <li className={props.isHomeActive}>
             <Link to="/">Home</Link>
           </li>
-          <li className="nav-menu-item">
+          <li className={props.isAboutActive}>
             <Link to="/about">About</Link>
           </li>
         </ul>
@@ -54,16 +54,38 @@ const Nav = styled.nav`
       justify-content: space-between;
 
       .nav-menu-item{
+        position: relative;
+
         a{
           text-decoration: none;
           font-size: 20px;
           font-weight: 400;
           color: ${(props) => props.darkMode ? "white" : "black"};
           transition: all ease-in-out .5s;
+
+          &:hover{
+            font-weight: 500;
+          }
+        }
+
+        &::after{
+          content: "";
+          position: absolute;
+          height: 4px;
+          width: 0;
+          background-color: ${(props) => props.darkMode ? "white" : "black"};
+          transition: all ease-in-out .3s;
+          bottom: 0;
+          left: 0;
+        }
+
+        &:hover::after{
+          width: 100%;
         }
       }
       .nav-menu-item-active{
         position: relative;
+        transition: all ease-in-out .5s;
         a{
           text-decoration: none;
           font-size: 20px;
